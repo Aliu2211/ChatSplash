@@ -21,6 +21,7 @@ export type RootStackParamList = {
     Chat: undefined;
     ChatRoom: undefined;
     MainTabs: undefined;
+    meet: undefined;
     
 
 
