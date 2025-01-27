@@ -1,20 +1,25 @@
-
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Main from './src/navigation/main';
+import { NavigationContainer } from '@react-navigation/native';
+import { OverlayProvider } from 'stream-chat-react-native';
+import { AppProvider } from './src/AppContext';
 import NavigationStack from './src/App';
 
 // create a component
 const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          {/* <Main /> */}
-          <NavigationStack/>
-          
-        </View>
+      <View style={styles.container}>
+        <AppProvider>
+          <OverlayProvider>
+            <NavigationContainer>
+              <NavigationStack />
+            </NavigationContainer>
+          </OverlayProvider>
+        </AppProvider>
+      </View>
     </GestureHandlerRootView>
   );
 };
@@ -23,9 +28,6 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#2c3e50',
   },
 });
 
